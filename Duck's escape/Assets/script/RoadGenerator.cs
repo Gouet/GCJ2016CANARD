@@ -3,7 +3,7 @@ using System.Collections;
 
 public class RoadGenerator : MonoBehaviour {
 
-    public GameObject road;
+    public GameObject[] road;
 
 	// Use this for initialization
 	void Start () {
@@ -12,7 +12,8 @@ public class RoadGenerator : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        Instantiate(road, col.gameObject.transform.position + new Vector3(0, (col.gameObject.GetComponent<SpriteRenderer>().sprite.rect.size.y / col.gameObject.GetComponent<SpriteRenderer>().sprite.pixelsPerUnit) * 4.5f), transform.rotation);
+        int i = Random.Range(0, road.Length - 1);
+        Instantiate(road[i], col.gameObject.transform.position + new Vector3(0, (col.gameObject.GetComponent<SpriteRenderer>().sprite.rect.size.y / col.gameObject.GetComponent<SpriteRenderer>().sprite.pixelsPerUnit) * 4.5f), transform.rotation);
         Destroy(col.gameObject);
     }
 

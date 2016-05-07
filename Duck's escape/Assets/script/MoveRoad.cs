@@ -9,6 +9,7 @@ public class MoveRoad : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-        transform.position = new Vector3(transform.position.x, transform.position.y - CameraScript.speed, transform.position.z);
+        if (CameraScript.gameOver == false)
+            transform.position = new Vector3(transform.position.x, transform.position.y - CameraScript.speed, transform.position.z);
 	}
 }
