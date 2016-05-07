@@ -48,11 +48,11 @@ public class TutorialProgress : MonoBehaviour {
 			nowPlaying = true;
 		}
 
-		if (count == 4 && pos == 1 && CameraScript.speed == 0f)
+		if (count == 4 && pos == 3 && CameraScript.speed == 0f)
 			CameraScriptTutorial.speed = 0.1f;
 		if (count == 3 && pos == 3 && CameraScript.speed == 0f)
 			CameraScriptTutorial.speed = 0.1f;
-		if (count == 2 && pos == 3 && CameraScript.speed == 0f)
+		if (count == 2 && (pos == 2 || pos == 1 || pos == 0) && PlayerTutorial.jump && CameraScript.speed == 0f)
 			CameraScriptTutorial.speed = 0.1f;
 
 		if (nowPlaying && count <= 0 && timer == 4) {
