@@ -16,7 +16,8 @@ public class CameraScript : MonoBehaviour {
 	void Update () {
         if (gameOver == false)
         {
-            speed += 0.008f * Time.deltaTime;
+            if (speed <= 0.4f)
+                speed += 0.004f * Time.deltaTime;
             score += 1f * Time.deltaTime;
         }
 	}

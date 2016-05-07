@@ -14,13 +14,18 @@ public class Player : MonoBehaviour {
         transform.position = new Vector3(positionTab[position], transform.position.y, transform.position.y);
     }
 
-    void OnCollisionEnter2D(Collision2D col)
+    void OnTriggerEnter2D(Collider2D col)
     {
-        Debug.Log("COLLISION");
-        if (col.gameObject.tag == "Obstacle")
+        if (col.gameObject.tag == "Obstacle" && col.gameObject.name != "manhole")
         {
             CameraScript.gameOver = true;
             gameObject.GetComponent<Animator>().SetBool("dead", true);
+        }
+        if (col.gameObject.tag == "Obstacle" && col.gameObject.name == "manhole" && Player.jump != true)
+        {
+            CameraScript.gameOver = true;
+            transform.position = col.gameObject.transform.position;
+            gameObject.GetComponent<Animator>().SetBool("fall", true);
         }
     }
 
@@ -44,14 +49,24 @@ public class Player : MonoBehaviour {
                 lastButton = 0;
             if (Input.GetAxisRaw("Jump") == 1 && CameraScript.gameOver == false && cdJump <= 0)
             {
-                countJump = 1f - CameraScript.speed / 10;
-                cdJump = (1f - CameraScript.speed / 10) * 2;
+                countJump = 1f - CameraScript.speed ;
+                cdJump = (1f - CameraScript.speed) * 2;
+                gameObject.GetComponent<Animator>().speed = 1f / countJump;
+                Debug.Log("durée jump:" + countJump);
+                Debug.Log("durée anime" + (1f / (1f / countJump)));
+                gameObject.GetComponent<Animator>().SetBool("jump", true);
                 jump = true;
             }
             if (countJump > 0)
                 countJump -= Time.deltaTime;
             if (cdJump > 0)
                 cdJump -= Time.deltaTime;
+            if (countJump <= 0)
+            {
+                jump = false;
+                gameObject.GetComponent<Animator>().speed = 1f;
+                gameObject.GetComponent<Animator>().SetBool("jump", false);
+            }
         }
     }
 }
