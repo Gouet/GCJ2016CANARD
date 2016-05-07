@@ -11,7 +11,6 @@ public class Score : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        Debug.Log("Score : " + CameraScript.score.ToString());
         gameObject.GetComponent<Text>().text = "Score : " + Mathf.Round(CameraScript.score).ToString();
     }
 }

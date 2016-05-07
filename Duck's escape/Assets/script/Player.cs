@@ -39,7 +39,7 @@ public class Player : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-        if (CameraScript.gameOver == false)
+		if (CameraScript.gameOver == false && CameraScript.isPaused == false)
         {
             if (Input.GetAxisRaw("Horizontal") == 1 && position < 3 && lastButton != 1)
             {
