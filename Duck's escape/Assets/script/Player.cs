@@ -65,7 +65,7 @@ public class Player : MonoBehaviour {
             {
                 audiosrc.PlayOneShot(boing);
                 countJump = 1f - CameraScript.speed ;
-                cdJump = (1f - CameraScript.speed) * 2;
+                cdJump = (1f - CameraScript.speed) * 1.5f;
                 gameObject.GetComponent<Animator>().speed = 1f / countJump;
                 gameObject.GetComponent<Animator>().SetBool("jump", true);
                 jump = true;
