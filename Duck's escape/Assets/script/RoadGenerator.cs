@@ -12,7 +12,7 @@ public class RoadGenerator : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        int i = Random.Range(0, road.Length - 1);
+        int i = Random.Range(0, road.Length);
         Instantiate(road[i], col.gameObject.transform.position + new Vector3(0, (col.gameObject.GetComponent<SpriteRenderer>().sprite.rect.size.y / col.gameObject.GetComponent<SpriteRenderer>().sprite.pixelsPerUnit) * 4.5f), transform.rotation);
         Destroy(col.gameObject);
     }

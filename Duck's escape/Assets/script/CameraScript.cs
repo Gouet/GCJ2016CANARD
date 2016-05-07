@@ -6,11 +6,14 @@ public class CameraScript : MonoBehaviour {
     public static float speed = 0.08f;
     public static float score = 0f;
     public static bool gameOver = false;
+    public AudioClip alarm;
+    private AudioSource audiosrc;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
+    // Use this for initialization
+    void Start () {
+        audiosrc = GetComponent<AudioSource>();
+        audiosrc.PlayOneShot(alarm);
+    }
 	
 	// Update is called once per frame
 	void Update () {
