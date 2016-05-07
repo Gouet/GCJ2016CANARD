@@ -21,7 +21,7 @@ public class CameraScript : MonoBehaviour {
         {
             if (speed <= 0.4f)
                 speed += 0.004f * Time.deltaTime;
-            score += 1f * Time.deltaTime;
+            score += 3f * Time.deltaTime;
         }
 	}
 }
