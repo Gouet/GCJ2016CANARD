@@ -25,6 +25,10 @@ public class TutorialProgress : MonoBehaviour {
 		while (--timer > 0) {
 			yield return new WaitForSeconds (1);
 		}
+		CameraScript.isPaused = false;
+		CameraScript.gameOver = false;
+		CameraScript.speed = 0.08f;
+		CameraScript.score = 0f;
 		SceneManager.LoadScene ("Main level");
 	}
 

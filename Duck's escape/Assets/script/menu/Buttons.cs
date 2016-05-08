@@ -6,6 +6,10 @@ public class Buttons : MonoBehaviour {
 
     public void onClickToPlay()
     {
+		CameraScript.isPaused = false;
+		CameraScript.gameOver = false;
+		CameraScript.speed = 0.08f;
+		CameraScript.score = 0f;
         SceneManager.LoadScene("Main level");
     }
 
