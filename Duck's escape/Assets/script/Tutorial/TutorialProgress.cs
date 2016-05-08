@@ -47,6 +47,11 @@ public class TutorialProgress : MonoBehaviour {
 			GameObject.Find ("MessageBox").transform.position = GameObject.Find("MessageBox").transform.position + new Vector3 (0, GameObject.Find("MessageBox").transform.localScale.y / 3, 0);
 			nowPlaying = true;
 		}
+		if (count == 2) {
+			GameObject.Find ("MessageBox").GetComponent<RectTransform>().sizeDelta = new Vector2(GameObject.Find("MessageBox").GetComponent<RectTransform>().sizeDelta.x, 70);
+			GameObject.Find("MessageBoxInside").GetComponent<RectTransform>().sizeDelta = new Vector2(GameObject.Find("MessageBoxInside").GetComponent<RectTransform>().sizeDelta.x, 58);
+			target.GetComponent<Text> ().text = "Vous devez sauter pour éviter les bouches d'égout laissées ouvertes.\nAppuyez sur espace ou le bouton A de votre manette.";
+		}
 
 		if (count == 4 && pos == 3 && CameraScript.speed == 0f)
 			CameraScriptTutorial.speed = 0.1f;

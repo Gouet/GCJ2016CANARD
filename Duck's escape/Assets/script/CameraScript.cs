@@ -11,6 +11,7 @@ public class CameraScript : MonoBehaviour {
     public AudioClip alarm;
     private AudioSource audiosrc;
 	public GameObject PauseCanvas;
+	public GameObject EndCanvas;
 
     // Use this for initialization
     void Start () {
@@ -32,10 +33,16 @@ public class CameraScript : MonoBehaviour {
 		if (Input.GetButtonDown ("Cancel")) {
 			switchPauseMenu ();
 		}
-		if (isPaused)
-			PauseCanvas.SetActive (true);
-		else
-			PauseCanvas.SetActive (false);
+		if (gameOver) {
+			EndCanvas.SetActive (true);
+			PlayerPrefs.SetFloat ("Highscore", Mathf.Max(Mathf.Round(score), PlayerPrefs.GetFloat("Highscore")));
+		} else {
+			EndCanvas.SetActive (false);
+			if (isPaused)
+				PauseCanvas.SetActive (true);
+			else
+				PauseCanvas.SetActive (false);
+		}
 
 		if (gameOver == false && isPaused == false)
         {
