@@ -43,7 +43,7 @@ public class Player : MonoBehaviour {
         {
             if (Input.GetAxisRaw("Horizontal") == 1 && position < 3 && lastButton != 1)
             {
-                int chanceCoin = Random.Range(0, 3);
+                int chanceCoin = Random.Range(0, 5);
                 if (chanceCoin == 0)
                     audiosrc.PlayOneShot(coin);
                 ++position;
